@@ -84,7 +84,7 @@ const CustomDialog = ({ title, open, setOpen, children }) => {
               gap="10px"
             >
               <CustomButton type="submit" fullWidth endIcon={<LoginIcon />}>
-                Войти
+                Добавить пользователя
               </CustomButton>
             </Box>
           </Box>
