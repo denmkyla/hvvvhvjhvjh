@@ -9,6 +9,8 @@ import { InputAdornment, IconButton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
+import PropTypes from "prop-types";
+
 import {
   bgImg,
   logo,
@@ -18,6 +20,33 @@ import {
   BackDrop,
   Copyright,
 } from "../../component";
+import Skeleton from "@mui/material/Skeleton";
+
+function Media(props) {
+  const { loading = false } = props;
+  return !loading ? (
+    <Box
+      sx={{
+        width: "100%",
+        height: "100%",
+        backgroundImage: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiXhX4YL6am7f-7_HfpEA5W3jGV0aOr46rQ3AQHefK&s)`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    ></Box>
+  ) : (
+    <Skeleton
+      animation="wave"
+      variant="rectangular"
+      width="100%"
+      height="100%"
+    ></Skeleton>
+  );
+}
+Media.propTypes = {
+  loading: PropTypes.bool,
+};
 export default function Login() {
   const { user, isLoading, isError, isSuccess, isMessege } = useSelector(
     (state) => state.auth
@@ -44,16 +73,7 @@ export default function Login() {
     <Grid container component="main" sx={{ height: "100vh" }}>
       <CssBaseline />
       <Grid item xs={false} sm={7} md={9}>
-        <Box
-          sx={{
-            width: "100%",
-            height: "100%",
-            backgroundImage: `url(${bgImg})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        ></Box>
+        <Media loading></Media>
       </Grid>
       <Grid item xs={12} sm={5} md={3} component={Paper} elevation={1} square>
         <Box
