@@ -1,0 +1,82 @@
+{
+  "users": [
+    {
+      "email": "kylymbekkemin@gmail.com",
+      "password": "$2a$10$8Isd/gcyg3MjHr7BksP.1effUQUELm3NedHj545cU/NfAN/wq6lZi",
+      "name": "Кылымбек",
+      "surname": "Токтобеков",
+      "role": "Разработчик",
+      "job": "Программист",
+      "login": "kylymbek",
+      "status": true,
+      "level": 4,
+      "gender": "Мужской",
+      "id": 1
+    },
+    {
+      "email": "rtokochev@infosystema.kg",
+      "password": "$2a$10$c42b8k/lf7cq77Im6EGCx.VaASG8p.2QbjFGsnHrqEIGaCFP1WDNe",
+      "name": "Руслан",
+      "surname": "Токочев",
+      "role": "Разработчик",
+      "job": "Директор",
+      "login": "rtokochev",
+      "status": "true",
+      "level": 2,
+      "gender": "Мужской",
+      "id": 2
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "name": "Разработчик"
+    },
+    {
+      "id": 2,
+      "name": "Бухгалтер"
+    },
+    {
+      "id": 3,
+      "name": "Специалист делопроизводитель"
+    },
+    {
+      "id": 4,
+      "name": "Администратор систем"
+    },
+    {
+      "id": 5,
+      "name": "Аналитик"
+    },
+    {
+      "id": 6,
+      "name": "Руководитель проектов"
+    },
+    {
+      "id": 7,
+      "name": "Специалист материально-техническиого обеспечения"
+    },
+    {
+      "id": 8,
+      "name": "Администратор систем"
+    }
+  ],
+  "level": [
+    {
+      "id": 1,
+      "name": "Делопроизводитель"
+    },
+    {
+      "id": 2,
+      "name": "Зам директор"
+    },
+    {
+      "id": 3,
+      "name": "Начальник"
+    },
+    {
+      "id": 4,
+      "name": "Исполнитель"
+    }
+  ]
+}

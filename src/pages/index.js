@@ -1,0 +1,10 @@
+export { default as Correspondence } from "./correspondence/Correspondence";
+export { default as Dashboard } from "./dashboard/Dashboard";
+export { default as ElectronicAppeal } from "./electronicappeal/ElectronicAppeal";
+export { default as Kanban } from "./kanban/Kanban";
+export { default as Login } from "./login/Login";
+export { default as Profile } from "./profile/Profile";
+export { default as Report } from "./report/Report";
+export { default as Settings } from "./settings/Settings";
+export { default as Task } from "./task/Task";
+export { default as Users } from "./users/Users";
