@@ -89,7 +89,8 @@
       "login": "wefwef",
       "gender": "Мужской",
       "systems": "",
-      "id": 7
+      "id": 7,
+      "status": "true"
     },
     {
       "email": "marwefklyan@gmail.com",

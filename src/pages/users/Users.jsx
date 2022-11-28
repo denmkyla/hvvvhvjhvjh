@@ -15,7 +15,8 @@ import { Link } from "react-router-dom";
 import { USERS_ROUTE } from "../../utils/Pages/Pages";
 import { useState } from "react";
 import { CreateUser } from "../../component";
-
+import CancelIcon from "@mui/icons-material/Cancel";
+import $api from "../../http";
 const Users = () => {
   const { user } = useSelector((state) => state.users);
   const dispatch = useDispatch();
@@ -49,13 +50,13 @@ const Users = () => {
               p="5px"
               display="flex"
               justifyContent="center"
-              backgroundColor={status ? PRIMARY.main : "red"}
+              backgroundColor={status ? PRIMARY.main : "#e0523d"}
               sx={{ borderRadius: "25px" }}
             >
               {status ? (
                 <CheckCircleSharpIcon sx={{ color: "white" }} />
               ) : (
-                <CheckCircleSharpIcon sx={{ color: "white" }} />
+                <CancelIcon sx={{ color: "white" }} />
               )}
             </Box>
           );
@@ -79,14 +80,29 @@ const Users = () => {
                   </IconButton>
                 </Tooltip>
                 <Tooltip title="Заблокировать">
-                  <IconButton size="small">
-                    <LockPersonIcon sx={{ color: PRIMARY.secondary }} />
-                  </IconButton>
+                  <div>
+                    <IconButton
+                      size="small"
+                      disabled={params.row.status ? true : false}
+                      onClick={() =>
+                        $api.patch("/users/" + params.row.id, {
+                          status: "false",
+                        })
+                      }
+                    >
+                      <LockPersonIcon sx={{ color: PRIMARY.secondary }} />
+                    </IconButton>
+                  </div>
                 </Tooltip>
                 <Tooltip title="Разблокировать">
-                  <IconButton size="small">
-                    <LockOpenIcon sx={{ color: PRIMARY.secondary }} />
-                  </IconButton>
+                  <div>
+                    <IconButton
+                      size="small"
+                      disabled={params.row.status ? false : true}
+                    >
+                      <LockOpenIcon sx={{ color: PRIMARY.secondary }} />
+                    </IconButton>
+                  </div>
                 </Tooltip>
                 <Tooltip title="Сбросить пароль">
                   <IconButton size="small">
