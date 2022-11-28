@@ -4,9 +4,9 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
-const CustomSelect = ({ label, item, id, name }) => {
+const CustomSelect = ({ label, item, id, name, req }) => {
   return (
-    <FormControl fullWidth size="small" required>
+    <FormControl fullWidth size="small" required={req}>
       <InputLabel id="demo-simple-select-helper-label">{label}</InputLabel>
       <Select
         labelId="demo-simple-select-helper-label"

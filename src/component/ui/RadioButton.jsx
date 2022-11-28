@@ -14,8 +14,7 @@ const CustomRadioButton = ({ label, item }) => {
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="gender"
         id="gender"
-        defaultValue={item[0].name}
-        value={item[0].name}
+
       >
         <FormLabel
           id="demo-row-radio-buttons-group-label"

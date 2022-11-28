@@ -8,63 +8,60 @@ import {
   CustomTextField,
   CustomSelect,
   CustomRadioButton,
+  TransitionAlerts,
 } from "..";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import $api from "../../http";
-
+import { getUsers } from "../../store/users/usersSlice";
 const CreateUser = ({ title, open, setOpen, children }) => {
   const { roles } = useSelector((state) => state.roles);
   const [level, setLevel] = useState([]);
-  const [systems, setSystems] = useState([]);
+  const [systems, setSystems] = useState({});
+  const [openAlert, setOpenAlert] = React.useState(false);
+  const [status, setStatus] = React.useState([]);
+
   const gender = [{ name: "Мужской" }, { name: "Женский" }];
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    $api
-      .get("/level")
-      .then((data) => {
-        setLevel(data.data);
-      })
-      .catch((error) => {
+    const getLevel = async () => {
+      try {
+        const response = await $api.get("/level");
+        setLevel(response.data);
+      } catch (error) {
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
         } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-          // http.ClientRequest in node.js
           console.log(error.request);
         } else {
-          // Something happened in setting up the request that triggered an Error
           console.log("Error", error.message);
         }
         console.log(error.config);
-      });
-    $api
-      .get("/systems")
-      .then((data) => {
-        setSystems(data.data);
-      })
-      .catch((error) => {
+      }
+    };
+    const getSystems = async () => {
+      try {
+        const response = await $api.get("/systems");
+        setSystems(response.data);
+      } catch (error) {
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
         } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-          // http.ClientRequest in node.js
           console.log(error.request);
         } else {
-          // Something happened in setting up the request that triggered an Error
           console.log("Error", error.message);
         }
         console.log(error.config);
-      });
+      }
+    };
+    getLevel();
+    getSystems();
   }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -83,22 +80,28 @@ const CreateUser = ({ title, open, setOpen, children }) => {
     $api
       .post("/register", userData)
       .then((data) => {
-        alert("add");
+        setOpenAlert(true);
+        setStatus({
+          severity: "success",
+          text: "Пользователь успешно создан!",
+          title: "Успешно!",
+        });
+        dispatch(getUsers());
       })
       .catch((error) => {
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
+          setOpenAlert(true);
+          setStatus({
+            severity: "error",
+            text: `${error.response.data}`,
+            title: "Ошибка!",
+          });
         } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-          // http.ClientRequest in node.js
           console.log(error.request);
         } else {
-          // Something happened in setting up the request that triggered an Error
           console.log("Error", error.message);
         }
         console.log(error.config);
@@ -115,6 +118,14 @@ const CreateUser = ({ title, open, setOpen, children }) => {
           validate="true"
           sx={{ mt: 1 }}
         >
+          <TransitionAlerts
+            open={openAlert}
+            setOpen={setOpenAlert}
+            severity={status.severity}
+            title={status.title}
+            text={status.text}
+          ></TransitionAlerts>
+
           <Box display="flex" flexDirection="row" gap="10px">
             <Box
               width="500px"
@@ -158,12 +169,14 @@ const CreateUser = ({ title, open, setOpen, children }) => {
                 label="Роль"
                 id="role"
                 item={roles}
+                req="true"
               ></CustomSelect>
               <CustomSelect
                 name="level"
                 id="level"
                 label="Уровень"
                 item={level}
+                req="true"
               ></CustomSelect>
             </Box>
             <Box

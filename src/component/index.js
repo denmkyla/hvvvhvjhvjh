@@ -15,4 +15,5 @@ export { default as CustomDataGrid } from "./ui/DataGrid";
 export { default as CreateUser } from "./form/CreateUser";
 export { default as CustomSelect } from "./ui/Select";
 export { default as CustomRadioButton } from "./ui/RadioButton";
+export { default as TransitionAlerts } from "./ui/Alert";
 
