@@ -10,15 +10,11 @@ import LockResetSharpIcon from "@mui/icons-material/LockResetSharp";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CheckCircleSharpIcon from "@mui/icons-material/CheckCircleSharp";
 import { PRIMARY } from "../../style/colors/Colors";
-import {
-  CustomButton,
-  CustomDataGrid,
-  Header,
-} from "../../component";
+import { CustomButton, CustomDataGrid, Header } from "../../component";
 import { Link } from "react-router-dom";
 import { USERS_ROUTE } from "../../utils/Pages/Pages";
 import { useState } from "react";
-import CustomDialog from "../../component/ui/Dialog";
+import { CreateUser } from "../../component";
 
 const Users = () => {
   const { user } = useSelector((state) => state.users);
@@ -123,7 +119,7 @@ const Users = () => {
         <CustomButton onClick={() => setOpenDialog(true)}>
           Добавить пользователя
         </CustomButton>
-        <CustomDialog
+        <CreateUser
           title="Создание пользователя"
           open={openDialog}
           setOpen={handleClose}

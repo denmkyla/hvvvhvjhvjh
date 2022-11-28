@@ -10,7 +10,6 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import PropTypes from "prop-types";
-
 import {
   bgImg,
   logo,
@@ -24,12 +23,12 @@ import Skeleton from "@mui/material/Skeleton";
 
 function Media(props) {
   const { loading = false } = props;
-  return !loading ? (
+  return loading ? (
     <Box
       sx={{
         width: "100%",
         height: "100%",
-        backgroundImage: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiXhX4YL6am7f-7_HfpEA5W3jGV0aOr46rQ3AQHefK&s)`,
+        backgroundImage: `url(${bgImg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -37,6 +36,7 @@ function Media(props) {
     ></Box>
   ) : (
     <Skeleton
+      sx={{ bgcolor: "white" }}
       animation="wave"
       variant="rectangular"
       width="100%"

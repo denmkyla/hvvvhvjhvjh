@@ -10,10 +10,10 @@ const Layout = () => {
         <NavSidebar />
         <div>
           <Topbar />
-          <Box sx={{ width: "100%", height: "93%"}}>
+          <Box sx={{ width: "100%", height: "93%" }}>
             <Box
               sx={{
-                padding: "5px 25px",
+                padding: "25px 25px",
                 width: "100%",
                 height: "100%",
                 border: "1px solid #F8F5F2",

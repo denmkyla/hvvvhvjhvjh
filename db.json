@@ -25,6 +25,19 @@
       "level": 2,
       "gender": "Мужской",
       "id": 2
+    },
+    {
+      "email": "kylymbeqqkkemin@gmail.com",
+      "password": "$2a$10$wmrBvboxNq2GTFS1CeN8Ku/6pqYsD8YUMbBOM2Ic7A6OWjp.xRysS",
+      "name": "s",
+      "surname": "sdv",
+      "job": "sdv",
+      "role": "Разработчик",
+      "level": "Зам директор",
+      "login": "vds",
+      "gender": "Мужской",
+      "systems": "КИС",
+      "id": 3
     }
   ],
   "roles": [
@@ -77,6 +90,12 @@
     {
       "id": 4,
       "name": "Исполнитель"
+    }
+  ],
+  "systems": [
+    {
+      "id": 1,
+      "name": "КИС"
     }
   ]
 }

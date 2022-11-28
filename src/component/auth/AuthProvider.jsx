@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
         window.clearTimeout(expiredTimer);
         const currentTime = Date.now();
         const timeLeft = exp * 1000 - currentTime;
-        console.log(timeLeft);
+        clearTimeout(expiredTimer);
         expiredTimer = window.setTimeout(() => {
           dispatch(logout());
         }, timeLeft);
