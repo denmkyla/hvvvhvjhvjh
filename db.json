@@ -130,6 +130,71 @@
       "gender": "Мужской",
       "systems": "КИС",
       "id": 10
+    },
+    {
+      "email": "marklyaascacsan@gmail.com",
+      "password": "$2a$10$U5klxgP55dJe5FbnjD6CZeDhZTqR66U8E8na.G7FNUpFMiKk582wi",
+      "name": "Kylakemin",
+      "surname": "xzzx ",
+      "job": " zx ",
+      "role": "Разработчик",
+      "level": "Зам директор",
+      "login": "xz zx",
+      "gender": "Мужской",
+      "systems": "КИС",
+      "id": 11
+    },
+    {
+      "email": "marklyascaascacsan@gmail.com",
+      "password": "$2a$10$2ulqkFVYLA9Pd4uOx.VCHu1a2zdm6TQ1HSfIM3JIM0bWnj3.mRHzq",
+      "name": "Kylakemin",
+      "surname": "xzzx ",
+      "job": " zx ",
+      "role": "Разработчик",
+      "level": "Зам директор",
+      "login": "xz zx",
+      "gender": "Мужской",
+      "systems": "КИС",
+      "id": 12
+    },
+    {
+      "email": "kylym34t34bekkemin@gmail.com",
+      "password": "$2a$10$m5.jgYMgIcAC/eW4uXPZwOTcnd22.ZZgw7GCA6FRbcfyL.TfwWfFO",
+      "name": "34t",
+      "surname": "34t",
+      "job": "34t",
+      "role": "Разработчик",
+      "level": "Зам директор",
+      "login": "34t34",
+      "gender": "Мужской",
+      "systems": "КИС",
+      "id": 13
+    },
+    {
+      "email": "kylymbewefwfkkemin@gmail.com",
+      "password": "$2a$10$dQrPsNhVACMrb1eLUr/wX.nF4PgBfpkOQVq6vfnshQuYKrcUqpcJi",
+      "name": "Kylakemin",
+      "surname": "wef",
+      "job": "wef",
+      "role": "Бухгалтер",
+      "level": "Делопроизводитель",
+      "login": "wefwef",
+      "gender": "Мужской",
+      "systems": "КИС",
+      "id": 14
+    },
+    {
+      "email": "kylymbsssewefwfkkemin@gmail.com",
+      "password": "$2a$10$lUq5TunfESHcRfqeTWDQh.ohjrZ0OWvaGlGyM93dTlmaVSg/N43N2",
+      "name": "Kylakemin",
+      "surname": "wef",
+      "job": "wef",
+      "role": "Бухгалтер",
+      "level": "Делопроизводитель",
+      "login": "wefwef",
+      "gender": "Мужской",
+      "systems": "КИС",
+      "id": 15
     }
   ],
   "roles": [

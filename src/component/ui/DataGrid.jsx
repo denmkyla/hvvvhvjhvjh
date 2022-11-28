@@ -1,16 +1,13 @@
 import React from "react";
-import {
-  DataGrid,
-  GridToolbar,
-} from "@mui/x-data-grid";
-const CustomDataGrid = ({ rows, columns,pageSize,setPageSize }) => {
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+const CustomDataGrid = ({ rows, columns, pageSize, setPageSize }) => {
   return (
     <DataGrid
       rows={rows}
       columns={columns}
       checkboxSelection
       disableSelectionOnClick
-      rowsPerPageOptions={[5, 10, 25, 50]}
+      rowsPerPageOptions={[10, 25, 50, 100]}
       pageSize={pageSize}
       onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
       localeText={{

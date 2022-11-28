@@ -20,7 +20,7 @@ import $api from "../../http";
 const Users = () => {
   const { user } = useSelector((state) => state.users);
   const dispatch = useDispatch();
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState(25);
   const [openDialog, setOpenDialog] = useState(false);
   useEffect(() => {
     dispatch(getUsers());
