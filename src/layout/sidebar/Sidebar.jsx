@@ -120,7 +120,7 @@ const NavSidebar = () => {
             justifyContent: "center",
             width: "100%",
             maxHeight: "100px",
-            margin: "25px 0px",
+            margin: "40px 0px 60px 0px",
           }}
         >
           {collapsed ? (

@@ -1,68 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Box } from "@mui/material";
-import {
-  CustomButton,
-  CustomTextField,
-  CustomSelect,
-  CustomRadioButton,
-  TransitionAlerts,
-} from "..";
-import { useDispatch, useSelector } from "react-redux";
-import $api from "../../http";
-import { getUsers } from "../../store/users/usersSlice";
+import { Box, TextField, Button } from "@mui/material";
+import { CustomSelect, CustomRadioButton } from "..";
+import { rolesAPI } from "../../services/rolesService";
+import { levelsAPI } from "../../services/levelsService";
+import { systemsAPI } from "../../services/systemsService";
+import { usersAPI } from "../../services/userssService";
+import { ToastContainer, toast } from "react-toastify";
+import BackDrop from "../ui/BackDrop";
 const CreateUser = ({ title, open, setOpen, children }) => {
-  const { roles } = useSelector((state) => state.roles);
-  const [level, setLevel] = useState([]);
-  const [systems, setSystems] = useState({});
-  const [openAlert, setOpenAlert] = React.useState(false);
-  const [status, setStatus] = React.useState([]);
-
+  const { data: roles } = rolesAPI.useGetRoleQuery();
+  const { data: level } = levelsAPI.useGetLevelQuery();
+  const { data: systems } = systemsAPI.useGetSystemQuery();
+  const [createUser, { isSuccess, isLoading }] =
+    usersAPI.useCreateUserMutation();
+  
   const gender = [{ name: "Мужской" }, { name: "Женский" }];
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const getLevel = async () => {
-      try {
-        const response = await $api.get("/level");
-        setLevel(response.data);
-      } catch (error) {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log("Error", error.message);
-        }
-        console.log(error.config);
-      }
-    };
-    const getSystems = async () => {
-      try {
-        const response = await $api.get("/systems");
-        setSystems(response.data);
-      } catch (error) {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log("Error", error.message);
-        }
-        console.log(error.config);
-      }
-    };
-    getLevel();
-    getSystems();
-  }, []);
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const userData = {
@@ -77,39 +33,15 @@ const CreateUser = ({ title, open, setOpen, children }) => {
       gender: data.get("gender"),
       systems: data.get("system"),
     };
-    $api
-      .post("/register", userData)
-      .then((data) => {
-        setOpenAlert(true);
-        setStatus({
-          severity: "success",
-          text: "Пользователь успешно создан!",
-          title: "Успешно!",
-        });
-        dispatch(getUsers());
-      })
-      .catch((error) => {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-          setOpenAlert(true);
-          setStatus({
-            severity: "error",
-            text: `${error.response.data}`,
-            title: "Ошибка!",
-          });
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log("Error", error.message);
-        }
-        console.log(error.config);
-      });
+    await createUser(userData).then(() => {
+      toast.success("Пользователь успешно создан");
+    });
   };
   return (
     <Dialog open={open} maxWidth="xl">
       <DialogTitle>{title}</DialogTitle>
+      <ToastContainer />
+      <BackDrop isLoading={isLoading}></BackDrop>
       <DialogContent dividers>
         <Box
           width="100%"
@@ -118,14 +50,6 @@ const CreateUser = ({ title, open, setOpen, children }) => {
           validate="true"
           sx={{ mt: 1 }}
         >
-          <TransitionAlerts
-            open={openAlert}
-            setOpen={setOpenAlert}
-            severity={status.severity}
-            title={status.title}
-            text={status.text}
-          ></TransitionAlerts>
-
           <Box display="flex" flexDirection="row" gap="10px">
             <Box
               width="500px"
@@ -134,7 +58,7 @@ const CreateUser = ({ title, open, setOpen, children }) => {
               flexDirection="column"
               gap="10px"
             >
-              <CustomTextField
+              <TextField
                 required
                 fullWidth
                 size="small"
@@ -144,7 +68,7 @@ const CreateUser = ({ title, open, setOpen, children }) => {
                 autoComplete="name"
                 autoFocus
               />
-              <CustomTextField
+              <TextField
                 required
                 fullWidth
                 size="small"
@@ -154,7 +78,7 @@ const CreateUser = ({ title, open, setOpen, children }) => {
                 id="surname"
                 autoComplete="surname"
               />
-              <CustomTextField
+              <TextField
                 required
                 fullWidth
                 size="small"
@@ -186,7 +110,7 @@ const CreateUser = ({ title, open, setOpen, children }) => {
               flexDirection="column"
               gap="10px"
             >
-              <CustomTextField
+              <TextField
                 required
                 fullWidth
                 size="small"
@@ -196,7 +120,7 @@ const CreateUser = ({ title, open, setOpen, children }) => {
                 id="login"
                 autoComplete="login"
               />
-              <CustomTextField
+              <TextField
                 required
                 fullWidth
                 size="small"
@@ -206,7 +130,7 @@ const CreateUser = ({ title, open, setOpen, children }) => {
                 id="password"
                 autoComplete="password"
               />
-              <CustomTextField
+              <TextField
                 required
                 fullWidth
                 size="small"
@@ -235,12 +159,17 @@ const CreateUser = ({ title, open, setOpen, children }) => {
                 justifyContent="space-between"
                 gap="20px"
               >
-                <CustomButton type="submit" fullWidth>
+                <Button variant="contained" type="submit" fullWidth>
                   Создать
-                </CustomButton>
-                <CustomButton onClick={() => setOpen()} fullWidth>
+                </Button>
+                <Button
+                  color="error"
+                  variant="contained"
+                  onClick={() => setOpen()}
+                  fullWidth
+                >
                   Отмена
-                </CustomButton>
+                </Button>
               </Box>
             </Box>
           </Box>

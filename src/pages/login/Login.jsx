@@ -1,5 +1,14 @@
 import * as React from "react";
-import { Paper, Box, Grid, Link, Typography, CssBaseline } from "@mui/material";
+import {
+  Paper,
+  Box,
+  Grid,
+  Link,
+  Typography,
+  CssBaseline,
+  TextField,
+  Button,
+} from "@mui/material";
 import { PRIMARY } from "../../style/colors/Colors";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -10,16 +19,9 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import PropTypes from "prop-types";
-import {
-  bgImg,
-  logo,
-  CustomSnackbar,
-  CustomTextField,
-  CustomButton,
-  BackDrop,
-  Copyright,
-} from "../../component";
+import { bgImg, logo, BackDrop, Copyright } from "../../component";
 import Skeleton from "@mui/material/Skeleton";
+import { ToastContainer, toast } from "react-toastify";
 
 function Media(props) {
   const { loading = false } = props;
@@ -56,9 +58,15 @@ export default function Login() {
   const [showPassword, setShowPassword] = React.useState(false);
   useEffect(() => {
     if (isSuccess || user) {
+      toast.success("Вы успешно авторизованы");
       navigate("/");
     }
   }, [user, isLoading, isError, isSuccess, isMessege, navigate, dispatch]);
+  useEffect(() => {
+    if (isError) {
+      toast.error(isMessege);
+    }
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -104,13 +112,14 @@ export default function Login() {
           >
             Автоматизированная система управления проектами
           </Typography>
+          <ToastContainer />
           <Box
             component="form"
             validate="true"
             onSubmit={handleSubmit}
             sx={{ mt: 1 }}
           >
-            <CustomTextField
+            <TextField
               margin="normal"
               required
               fullWidth
@@ -121,7 +130,7 @@ export default function Login() {
               autoComplete="email"
               autoFocus
             />
-            <CustomTextField
+            <TextField
               margin="normal"
               required
               fullWidth
@@ -146,21 +155,16 @@ export default function Login() {
               }}
             />
 
-            <CustomButton
+            <Button
               sx={{ marginTop: "15px" }}
               type="submit"
               fullWidth
               endIcon={<LoginIcon />}
+              variant="contained"
             >
               Войти
-            </CustomButton>
+            </Button>
             <BackDrop isLoading={isLoading}></BackDrop>
-            <CustomSnackbar
-              open={isError}
-              type="error"
-              title={"Ошибка!"}
-              messege={isMessege}
-            ></CustomSnackbar>
             <Grid container>
               <Grid item xs>
                 <Link

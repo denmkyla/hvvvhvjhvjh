@@ -1,14 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const rolesAPI = createApi({
-  reducerPath: "rolesAPI",
+export const levelsAPI = createApi({
+  reducerPath: "levelsAPI",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API,
   }),
   endpoints: (builder) => ({
-    getRole: builder.query({
+    getLevel: builder.query({
       query: () => ({
-        url: "/roles",
+        url: "/levels",
       }),
     }),
   }),

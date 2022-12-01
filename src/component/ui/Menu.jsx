@@ -46,15 +46,13 @@ const MenuAvatar = ({ user }) => {
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
               >
-                <KeyboardArrowDownIcon sx={{ color: "#161c24" }} />
+                <KeyboardArrowDownIcon />
               </IconButton>
             </Tooltip>
           }
         >
           <ListItemAvatar>
-            <AccountCircleIcon
-              sx={{ fontSize: "50px", color: PRIMARY.secondary }}
-            />
+            <AccountCircleIcon sx={{ fontSize: "50px" }} />
           </ListItemAvatar>
           <ListItemText
             primary={user.name + " " + user.surname}
@@ -98,17 +96,14 @@ const MenuAvatar = ({ user }) => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem component={Link} to={PROFILE_ROUTE}>
-          <Avatar sx={{ bgcolor: PRIMARY.secondary }} />
+          <Avatar />
           <Typography sx={{ color: "#161c24" }}>Профиль</Typography>
         </MenuItem>
 
         <Divider />
-        <MenuItem
-          onClick={() => dispatch(logout())}
-          sx={{ color: PRIMARY.secondary }}
-        >
+        <MenuItem onClick={() => dispatch(logout())}>
           <ListItemIcon>
-            <Logout fontSize="small" sx={{ color: PRIMARY.secondary }} />
+            <Logout fontSize="small" />
           </ListItemIcon>
           Выйти
         </MenuItem>

@@ -26,16 +26,6 @@ const CustomDataGrid = ({ rows, columns, pageSize, setPageSize }) => {
       }}
       componentsProps={{
         toolbar: { printOptions: { hideToolbar: true, hideFooter: true } },
-        panel: {
-          sx: {
-            "& .MuiTypography-root": {
-              color: "red",
-            },
-            "& .MuiButton-root": {
-              color: "red",
-            },
-          },
-        },
       }}
       pagination
     ></DataGrid>
