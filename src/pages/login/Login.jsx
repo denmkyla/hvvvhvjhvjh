@@ -62,12 +62,7 @@ export default function Login() {
       navigate("/");
     }
   }, [user, isLoading, isError, isSuccess, isMessege, navigate, dispatch]);
-  useEffect(() => {
-    if (isError) {
-      toast.error(isMessege);
-    }
-  }, []);
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);

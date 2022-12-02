@@ -13,43 +13,21 @@ import { USERS_ROUTE } from "../../utils/Pages/Pages";
 import { useState } from "react";
 import { CreateUser } from "../../component";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { usersAPI } from "../../services/userssService";
 import { toast, ToastContainer } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteUsers, updateUsers } from "../../store/users/usersSlice";
 const Users = () => {
-  const {
-    data: users,
-    isSuccess,
-    isLoading,
-    isError,
-    error,
-  } = usersAPI.useGetUsersQuery();
   const [pageSize, setPageSize] = useState(25);
   const [openDialog, setOpenDialog] = useState(false);
+  const { user, isSuccess } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
   const handleClose = () => {
     setOpenDialog(false);
   };
-  const [updateUser, { isLoading: updateLoading }] =
-    usersAPI.useUpdateUserMutation();
-  const [deleteUser, { isLoading: deleteLoading }] =
-    usersAPI.useDeleteUserMutation();
-  const handleBlock = (params) => {
-    updateUser({ ...params, status: "false" })
-      .then(() => {
-        toast.success("Пользователь заблокирован");
-      })
-      .catch((error) => {
-        toast.error(error.data);
-      });
-  };
-  const handleDeBlock = (params) => {
-    updateUser({ ...params, status: "true" })
-      .then(() => {
-        toast.success("Пользователь разблокирован");
-      })
-      .catch((error) => {
-        toast.error(error.data);
-      });
-  };
+
+  if (isSuccess) {
+    toast.success("ggg");
+  }
   const columns = useMemo(
     () => [
       { field: "id", headerName: "ID", width: 60 },
@@ -106,7 +84,11 @@ const Users = () => {
                     <IconButton
                       size="small"
                       disabled={params.row.status === "true" ? false : true}
-                      onClick={() => handleBlock(params.row)}
+                      onClick={() =>
+                        dispatch(
+                          updateUsers({ ...params.row, status: "false" })
+                        )
+                      }
                     >
                       <LockPersonIcon sx={{ color: PRIMARY.secondary }} />
                     </IconButton>
@@ -117,7 +99,9 @@ const Users = () => {
                     <IconButton
                       size="small"
                       disabled={params.row.status === "true" ? true : false}
-                      onClick={() => handleDeBlock(params.row)}
+                      onClick={() =>
+                        dispatch(updateUsers({ ...params.row, status: "true" }))
+                      }
                     >
                       <LockOpenIcon sx={{ color: PRIMARY.secondary }} />
                     </IconButton>
@@ -131,7 +115,7 @@ const Users = () => {
                 <Tooltip title="Удалить">
                   <IconButton
                     size="small"
-                    onClick={() => deleteUser(params.row)}
+                    onClick={() => dispatch(deleteUsers(params.row.id))}
                   >
                     <DeleteIcon sx={{ color: PRIMARY.secondary }} />
                   </IconButton>
@@ -146,8 +130,8 @@ const Users = () => {
   );
 
   return (
-    <Box height="95%" display="flex" flexDirection="column">
-    <ToastContainer />
+    <Box height="100%" display="flex" flexDirection="column">
+      <ToastContainer />
       <Box
         display="flex"
         justifyContent="space-between"
@@ -164,27 +148,13 @@ const Users = () => {
           setOpen={handleClose}
         />
       </Box>
-      {isSuccess && (
-        <CustomDataGrid
-          rows={users}
-          columns={columns}
-          pageSize={pageSize}
-          setPageSize={setPageSize}
-        ></CustomDataGrid>
-      )}
-      {error && (
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="column"
-          width="100%"
-          height="100%"
-        >
-          <h1>{error.status}</h1>
-          <h2>{JSON.stringify(error.data)}</h2>
-        </Box>
-      )}
+
+      <CustomDataGrid
+        rows={user}
+        columns={columns}
+        pageSize={pageSize}
+        setPageSize={setPageSize}
+      ></CustomDataGrid>
     </Box>
   );
 };

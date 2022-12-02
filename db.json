@@ -1,23 +1,8 @@
 {
   "users": [
     {
-      "email": "m343tarklyan@gmail.com",
-      "password": "$2a$10$m4IskuNtP4Tp9QmPXXbL/uehgZTSbkGYjBa1DONPuMwYwSd6U5jG2",
-      "name": "34t",
-      "surname": "34t",
-      "job": "34t",
-      "role": "Бухгалтер",
-      "level": "Делопроизводитель",
-      "login": "34t",
-      "gender": "Мужской",
-      "systems": "КИС",
-      "id": 2,
-      "status": "true"
-    },
-    {
       "email": "marklyan@gmail.com",
-      "password": "$2a$10$PJNMkZlGv9.Lg0Z69TetgOM9XHITL46wSuvx.gs8asgvwIzA6CKdi",
-
+      "password": "$2a$10$MXsLZ3gf6Zzw/mQqAZKl0OArWVl8kbVQApH6oVxg9Qw5tYNezA0qu",
       "name": "Кылымбек",
       "surname": "Токтобеков",
       "job": "Разработчик",
@@ -31,7 +16,7 @@
     },
     {
       "email": "mar34t34t34t34klyan@gmail.com",
-      "password": "$2a$10$KA0AybTfb9.wVMNSt1HSIu1bZQ/DCC/zDy7ZQ1Wy170gcbLtCd0wC",
+      "password": "$2a$10$yk4vf9IJKKZSnd.8dBxOp.5Sqa49Q/YlfGY8187w/qmVmyrnatnVq",
       "name": "23t3t",
       "surname": "t4",
       "job": "43t",
@@ -40,50 +25,12 @@
       "login": "34t34",
       "gender": "Мужской",
       "systems": "КИС",
-      "id": 6
-    },
-    {
-      "email": "mar34ert34t34t34klyan@gmail.com",
-      "password": "$2a$10$AfE.FVOSXk1audyyU0x8ber87lonJ2YFi1Dw5FqqkIq73EKgUIh06",
-      "name": "23t3t",
-      "surname": "t4",
-      "job": "43t",
-      "role": "Разработчик",
-      "level": "Делопроизводитель",
-      "login": "34t34",
-      "gender": "Мужской",
-      "systems": "КИС",
-      "id": 7
-    },
-    {
-      "email": "mar34erte34t34t34klyan@gmail.com",
-      "password": "$2a$10$OQ0hrvUg6K7rt37kCKBl..dqxrWgcXBWRTTJ53iVuAB2fBCPxiTce",
-      "name": "23t3t",
-      "surname": "t4",
-      "job": "43t",
-      "role": "Разработчик",
-      "level": "Делопроизводитель",
-      "login": "34t34",
-      "gender": "Мужской",
-      "systems": "КИС",
-      "id": 8
-    },
-    {
-      "email": "markweeeeeeewlyan@gmail.com",
-      "password": "$2a$10$8Ri6UfEvD6i3eVbkaP7YOOql/Vmk9r4..sA0993HWz4KG9HkykGOq",
-      "name": "wef23r",
-      "surname": "wef23r",
-      "job": "wef23r",
-      "role": "Разработчик",
-      "level": "Делопроизводитель",
-      "login": "wef23r",
-      "gender": "Мужской",
-      "systems": "КИС",
-      "id": 9
+      "id": 6,
+      "status": "true"
     },
     {
       "email": "joererhern@mail.com",
-      "password": "$2a$10$C0lAONMoPLCtYDHh8QQ5P.P3X9fF87kiqjhkL70PQMKKdLjcSP60O",
+      "password": "$2a$10$Cd6m2nd6.t5sPBBqqo6R2eRkPhAVZ3bzIatZ7x98V9KHLmlpmuP5y",
       "name": "gerg",
       "surname": "erg",
       "job": "ergere",
@@ -92,77 +39,8 @@
       "login": "erg",
       "gender": "Мужской",
       "systems": "КИС",
-      "id": 10
-    },
-    {
-      "email": "m34t34arklyan@gmail.com",
-      "password": "$2a$10$/8bjs5pTe/2Rt/dpcPFOzudCsm3WNhXZ.3DTVaP5/pcmEeiXtbIBm",
-      "name": "t34t",
-      "surname": "34t4",
-      "job": "34t",
-      "role": "Бухгалтер",
-      "level": "Делопроизводитель",
-      "login": "34t3",
-      "gender": "Мужской",
-      "systems": "КИС",
-      "id": 11
-    },
-    {
-      "email": "ma4545rklyan@gmail.com",
-      "password": "$2a$10$c7Ar28cfmP7fjPtLZoSw7ubGMAKyExkmzyfV0l8xwDyUEcyL3fMSW",
-      "name": "4r5h54",
-      "surname": "45h54",
-      "job": "45h4",
-      "role": "Разработчик",
-      "level": "Делопроизводитель",
-      "login": "45h",
-      "gender": "Мужской",
-      "systems": "КИС",
-      "id": 12
-    },
-    {
-      "email": "ma4534g45rklyan@gmail.com",
-      "password": "$2a$10$RSiEXUZn32oedjlEbn4uHuuo59JJ1TFTmRUonXwKDOUYrTpqhpno2",
-      "name": "4r5h54",
-      "surname": "45h54",
-      "job": "45h4",
-      "role": "Разработчик",
-      "level": "Делопроизводитель",
-      "login": "45h",
-      "gender": "Мужской",
-      "systems": "КИС",
-      "id": 13
-    },
-    {
-      "email": "jo34t34thn@mail.com",
-      "password": "$2a$10$ZIPqtOE.TiJg411hp1J4s.fwErZo.FJa/uOYFa7XFHkXJuFtkBY3q",
-      "name": "34t3t",
-      "surname": "34t",
-      "job": "34t43",
-      "role": "Бухгалтер",
-      "level": "Делопроизводитель",
-      "login": "34t34t",
-      "gender": "Мужской",
-      "systems": "КИС",
-      "id": 14
-    },
-    {
-      "email": "jo34t3e4thn@mail.com",
-      "password": "$2a$10$IqkXck8JHKJ1vJ6HHVDDJeGpFtSt0L6GKxd5sBxZodeDj/ecsxSiK",
-      "name": "34t3t",
-      "surname": "34t",
-      "job": "34t43",
-      "role": "Бухгалтер",
-      "level": "Делопроизводитель",
-      "login": "34t34t",
-      "gender": "Мужской",
-      "systems": "КИС",
-      "id": 15
-    },
-    {
-      "email": "1marklyan@gmail.com",
-      "password": "$2a$10$PJNMkZlGv9.Lg0Z69TetgOM9XHITL46wSuvx.gs8asgvwIzA6CKdi",
-      "id": 16
+      "id": 10,
+      "status": "true"
     }
   ],
   "roles": [

@@ -11,7 +11,6 @@ import { PROFILE_ROUTE } from "../../utils/Pages/Pages";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/auth/authSlice";
-import { PRIMARY } from "../../style/colors/Colors.js";
 import {
   Box,
   ListItem,

@@ -1,8 +1,5 @@
-//
-import Fab from "./Fab";
 import Card from "./Card";
 import Chip from "./Chip";
-import Tabs from "./Tabs";
 import Menu from "./Menu";
 import Link from "./Link";
 import Lists from "./List";
@@ -24,7 +21,6 @@ import Popover from "./Popover";
 import Stepper from "./Stepper";
 import DataGrid from "./DataGrid";
 import Skeleton from "./Skeleton";
-
 import Progress from "./Progress";
 import Timeline from "./Timeline";
 import TreeView from "./TreeView";

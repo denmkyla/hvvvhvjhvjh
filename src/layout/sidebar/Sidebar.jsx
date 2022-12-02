@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { PRIMARY } from "../../style/colors/Colors";
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { logo } from "../../component";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -30,6 +30,7 @@ import Copyright from "../../component/ui/Copyright";
 const NavSidebar = () => {
   const { collapsed } = useProSidebar();
   const [selected, setSelected] = useState("Приборный панель");
+  const theme = useTheme();
   const listItems = [
     {
       listIcon: <DashboardIcon />,
@@ -121,10 +122,43 @@ const NavSidebar = () => {
             width: "100%",
             maxHeight: "100px",
             margin: "40px 0px 60px 0px",
+            [theme.breakpoints.down("lg")]: {
+              bgcolor: "red",
+            },
+            "& .sidebar-inner": {
+              background: `${PRIMARY.main} !important`,
+              height: "100vh",
+              borderRadius: "0px 25px 25px 0px",
+            },
+            "& .icon-wrapper": {
+              backgroundColor: "transparent !important",
+            },
+            "& .menu-item": {
+              padding: collapsed
+                ? "5px 10px 5px 10px !important"
+                : "5px 0px 5px 25px !important",
+              borderRadius: "25px 0px 0px 25px",
+            },
+            "& .menu-anchor": {
+              padding: collapsed
+                ? "5px 5px 5px 10px !important"
+                : "5px 0px 5px 25px !important",
+              color: "white",
+              borderRadius: collapsed ? "50px" : "25px 0px 0px 25px",
+            },
+            "& .menu-anchor:hover": {
+              backgroundColor: "white",
+              color: `${PRIMARY.main} !important`,
+              transition: "all 500ms ease",
+            },
+            "& .menu-item.active>.menu-anchor": {
+              color: `${PRIMARY.main} !important`,
+              backgroundColor: "white",
+            },
           }}
         >
           {collapsed ? (
-            <img src={logo} alt="logo" width="50px" />
+            <img src={logo} alt="logo" />
           ) : (
             <img src={logo} alt="logo" width="80px" />
           )}

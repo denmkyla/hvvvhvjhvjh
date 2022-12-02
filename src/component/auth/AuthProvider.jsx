@@ -3,31 +3,30 @@ import { useEffect } from "react";
 import { setSession, logout } from "../../store/auth/authSlice";
 import authService from "../../services/authService";
 import jwtDecode from "jwt-decode";
+import { getRoles } from "../../store/roles/rolesSlice";
+import { getSystems } from "../../store/systems/systemsSlice";
+import { getLevels } from "../../store/levels/levelsSlice";
 const AuthProvider = ({ children }) => {
   const dispatch = useDispatch();
+
+  const getData = async () => {
+    dispatch(getRoles());
+    dispatch(getSystems());
+    dispatch(getLevels());
+  };
+
   useEffect(() => {
     const initialize = async () => {
       const accessToken = window.localStorage.getItem("accessToken");
-      const HandleTokenExpired = (exp) => {
-        let expiredTimer;
-        window.clearTimeout(expiredTimer);
-        const currentTime = Date.now();
-        const timeLeft = exp * 1000 - currentTime;
-        clearTimeout(expiredTimer);
-        expiredTimer = window.setTimeout(() => {
-          dispatch(logout());
-        }, timeLeft);
-      };
       if (accessToken && authService.isValidToken(accessToken)) {
         dispatch(setSession(accessToken));
-        const { exp } = jwtDecode(accessToken);
-        HandleTokenExpired(exp);
+        getData();
       } else {
         dispatch(logout());
       }
     };
     initialize();
-  }, [dispatch]);
+  }, []);
 
   return <>{children}</>;
 };

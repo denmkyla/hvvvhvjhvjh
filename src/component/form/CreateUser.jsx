@@ -1,22 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Box, TextField, Button } from "@mui/material";
 import { CustomSelect, CustomRadioButton } from "..";
-import { rolesAPI } from "../../services/rolesService";
-import { levelsAPI } from "../../services/levelsService";
-import { systemsAPI } from "../../services/systemsService";
-import { usersAPI } from "../../services/userssService";
 import { ToastContainer, toast } from "react-toastify";
 import BackDrop from "../ui/BackDrop";
+import { useSelector, useDispatch } from "react-redux";
+import { createUsers } from "../../store/users/usersSlice";
+
 const CreateUser = ({ title, open, setOpen, children }) => {
-  const { data: roles } = rolesAPI.useGetRoleQuery();
-  const { data: level } = levelsAPI.useGetLevelQuery();
-  const { data: systems } = systemsAPI.useGetSystemQuery();
-  const [createUser, { isSuccess, isLoading }] =
-    usersAPI.useCreateUserMutation();
-  
+  const dispatch = useDispatch();
+  const { roles } = useSelector((state) => state.roles);
+  const { systems } = useSelector((state) => state.systems);
+  const { levels } = useSelector((state) => state.levels);
+  const { isLoading } = useSelector((state) => state.users);
+
   const gender = [{ name: "Мужской" }, { name: "Женский" }];
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,9 +32,7 @@ const CreateUser = ({ title, open, setOpen, children }) => {
       gender: data.get("gender"),
       systems: data.get("system"),
     };
-    await createUser(userData).then(() => {
-      toast.success("Пользователь успешно создан");
-    });
+    dispatch(createUsers(userData));
   };
   return (
     <Dialog open={open} maxWidth="xl">
@@ -93,14 +90,14 @@ const CreateUser = ({ title, open, setOpen, children }) => {
                 label="Роль"
                 id="role"
                 item={roles}
-                req="true"
+                req={true}
               ></CustomSelect>
               <CustomSelect
                 name="level"
                 id="level"
                 label="Уровень"
-                item={level}
-                req="true"
+                item={levels}
+                req={true}
               ></CustomSelect>
             </Box>
             <Box

@@ -7,7 +7,7 @@ import { useProSidebar } from "react-pro-sidebar";
 import { useSelector } from "react-redux";
 const Topbar = () => {
   const { collapseSidebar } = useProSidebar();
-  const { user, isSuccess, isMessege } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   return (
     <Box
       display="flex"
